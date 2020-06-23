@@ -1,13 +1,12 @@
 import os
 from datetime import datetime
 from flask import Flask, redirect, render_template, request, session, url_for
-from os import path
-if path.exists("env.py"):
+if os.path.exists("env.py"):
     import env
 
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = os.environ.get("SECRET_KEY")
 messages = []
 
 #this will add username and messages to the messages =[] 
