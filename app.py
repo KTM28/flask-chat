@@ -7,7 +7,7 @@ if path.exists("env.py"):
 
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET")
+app.secret_key = os.getenv("SECRET_KEY")
 messages = []
 
 #this will add username and messages to the messages =[] 
