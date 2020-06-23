@@ -1,10 +1,13 @@
 import os
 from datetime import datetime
 from flask import Flask, redirect, render_template, request, session, url_for
+from os import path
+if path.exists("env.py"):
+    import env
 
 
 app = Flask(__name__)
-app.secret_key = "randomstring123"
+app.secret_key = os.getenv("SECRET")
 messages = []
 
 #this will add username and messages to the messages =[] 
@@ -41,6 +44,6 @@ def user(username):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-    port=os.environ.get("PORT"),
-    debug=True)
+    app.run(host=os.environ.get("IP", "0.0.0.0"),
+    port=os.environ.get("PORT", "5000"),
+    debug=False)
